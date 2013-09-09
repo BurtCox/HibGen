@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<!-- SQL dialect -->
+		<property name="hibernate.dialect">
+			org.hibernate.dialect.Oracle10gDialect
+		</property>
+
+		<!-- Use this direct connection to enable Spy Engine
+			<property name="connection.driver_class">com.p6spy.engine.spy.P6SpyDriver</property>
+		-->
+			<property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+			<property name="connection.url">jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=xldrac01-vip.swacorp.com)(PORT=1540))(ADDRESS=(PROTOCOL=TCP)(HOST=xldrac02-vip.swacorp.com)(PORT=1540))(ADDRESS=(PROTOCOL=TCP)(HOST=xldrac03-vip.swacorp.com)(PORT=1540))(ADDRESS=(PROTOCOL=TCP)(HOST=xldrac04-vip.swacorp.com)(PORT=1540))(LOAD_BALANCE=yes)(FAILOVER=ON)(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=SPNRD.swacorp.com)(failover_mode=(type=select)(method=basic)(retries=180)(delay=5))))
+			</property>
+			<property name="connection.username">soi_user</property>
+			<property name="connection.password">soi_user99</property>
+		
+
+		<!-- Datasource setting 
+		<property name="hibernate.connection.datasource">
+			jdbc/SoiDev
+		</property>
+		-->
+		
+		<!-- Disable the second-level cache  -->
+		<property name="hibernate.cache.provider_class">
+			org.hibernate.cache.NoCacheProvider
+		</property>
+
+		<!-- Echo all executed SQL to stdout -->
+		<property name="hibernate.show_sql">false</property>
+
+
+		<property name="hibernate.transaction.factory_class">
+			org.hibernate.transaction.JDBCTransactionFactory
+		</property>
+
+		<!-- Enable Hibernate's automatic session context management -->
+		<property name="hibernate.current_session_context_class">
+			thread
+		</property>
+	</session-factory>
+
+</hibernate-configuration>
